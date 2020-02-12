@@ -1,0 +1,77 @@
+body {
+text-align: center;
+margin: 0;
+font-family: Verdana, Arial, sans-serif;
+font-size: 16px;
+}
+
+.list .todo{
+text-align: left;
+list-style-type: none;
+padding-left: 0px;
+}
+
+.title{
+height: 100%;
+background: #6f6fde;
+padding: 10px 15px;
+}
+
+.text{
+height: 50px;
+width: 400px;
+}
+
+.pink{
+background-color: pink;
+height: 30px;
+width: 30px;
+}
+
+.red{
+background-color: red;
+height: 30px;
+width: 30px;
+}
+
+.blue{
+background-color: blue;
+height: 30px;
+width: 30px;
+}
+
+.green{
+background-color: green;
+height: 30px;
+width: 30px;
+}
+
+.yellow{
+background-color: yellow;
+height: 30px;
+width: 30px;
+}
+
+.lightblue{
+background-color: lightblue;
+height: 30px;
+width: 30px;
+}
+
+.add{
+background-color: lightblue;
+height: 30px;
+width: 50px;
+}
+
+.edit{
+background-color: lightblue;
+height: 30px;
+width: 50px;
+}
+
+.del{
+background-color: lightblue;
+height: 30px;
+width: 50px;
+}

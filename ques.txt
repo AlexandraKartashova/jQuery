@@ -24,3 +24,5 @@
 
 class = cointeiner
 class = newtask
+
+чекбоксы
