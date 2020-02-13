@@ -11,21 +11,24 @@
 }
 
 .block_form{
-    margin-top: 60px;
+    margin-top: 40px;
     float: left;
-    width: 400px;
+    width: 550px;
     border: 1px solid #000;
 }
-.block_form .form_input{
+
+.form_input{
+    margin-top: 20px;
     float: left;
     outline: none;
     width: 274px;
-    border: none;
+    border: 1px solid white;
+    
 }
 
 .button_color{
     float: right;
-    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .red{
@@ -76,4 +79,5 @@
     height: 40px;
     width: 40px;
     background-color: lightgreen;
+    margin-bottom: 10px;
 }
