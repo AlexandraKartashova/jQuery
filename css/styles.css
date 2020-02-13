@@ -6,30 +6,29 @@
     padding: 15px;
 }
 
-.button_color{
-    float: right;
-
-}
 .list{
     margin-bottom: 30px;
 }
 
 .block_form{
+    margin-top: 60px;
     float: left;
-    height: 30px;
-    width: 300px;
+    width: 400px;
     border: 1px solid #000;
 }
-.form_input{
+.block_form .form_input{
     float: left;
     outline: none;
-    height: 20px;
     width: 274px;
     border: none;
-    vertical-align: middle;
 }
 
-.button_color .red{
+.button_color{
+    float: right;
+    margin-bottom: 25px;
+}
+
+.red{
     margin: 1px;
     height: 20px;
     width: 20px;
@@ -73,7 +72,7 @@
 
 .button_add{
     text-align: center;
-    margin: 1px;
+    margin-right: 5px;
     height: 40px;
     width: 40px;
     background-color: lightgreen;
