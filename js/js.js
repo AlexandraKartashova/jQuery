@@ -1,39 +1,30 @@
-"use strict";
+const todoList = [];
 
+const showTodo = (todoList) => {
+        const newDiv = document.createElement("div");
+        newDiv.innerHTML = todoList[0].title;
 
-var todoItems = [];
+        $('.my_list').append(newDiv);
+}
 
-function addTodo(text) {
-    const todo = {
-        title: text,
-        color: 'random color',
-        id: Date.now(),
+const removeTodo = (item) => {
+
+}
+
+$('#add').on('click', () => {
+    const inputValue = $('#new_item')[0].value;
+    todoList.push({
+        title: inputValue,
+        color: 'randomColor',
+        id: 'randomId',
         checked: false
-    };
+    })
+    showTodo(todoList)
+    console.log('here will be our todoList: ', todoList)
+})
 
-    todoItems.push(todo);
-    const list = document.querySelector('our__list');
-    list.insertAdjacentHTML('beforeed',`
-    <li class = 'todo-item' data-key = '${todo.id}'>
-    <input id = '${todo.id}' type = 'checkbox'/>
-    <label for = '${todo.id}' class = 'tick'></label>
-    <span>${todo.id}</span>
-    </li>
-    `);
-}
 
-const form = document.querySelector('button_add');
-form.addEventListener('submit', event => {
-event.preventDefault();
-const input = document.querySelector('button_input');
 
-const text = input.value.trim();
-if (text !== ''){
-    addTodo(text);
-    input.value = '';
-    input.focus();
-}
-});
 
 //Добавление туду
 //брать значение с инпута

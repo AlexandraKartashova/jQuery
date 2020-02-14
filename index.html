@@ -7,9 +7,7 @@
   <body>
     <div class = 'block'>
         <div class = 'block_form'>
-          <form class = 'button_input'>
-            <input type = 'text' placeholder="Add new item" class = 'form_input'>
-          </form>
+            <input  id = 'new_item' type = 'text' placeholder="Add new item" name = 'newList'>
             <div class = button_color>
               <button id = 'color' type = 'submit' class = 'red'></button>
               <button id = 'color' type = 'submit' class = 'pink'></button>
@@ -17,13 +15,13 @@
               <button id = 'color' type = 'submit' class = 'green'></button>
               <button id = 'color' type = 'submit' class = 'yellow'></button>
               <button id = 'color' type = 'submit' class = 'lightblue'></button>
-              <button id = 'add' type = 'submit' class = 'button_add'>Add</button>
-              <button id = 'add' type = 'submit' class = 'edit'>Edit</button>
-              <button id = 'add' type = 'submit' class = 'del'>Del</button>
+              <button id = 'del' type = 'submit' class = 'del'>Del</button>
+              <button id = 'edit' type = 'submit' class = 'edit'>Edit</button>
+              <button id = 'add' type = 'submit' class = 'add'>Add</button>
             </div>
         </div>
-        <ul class="our__list">
-        </ul>
+          <ul class="my_list">
+          </ul>
     </div>
   <script src="lib/jquery-3.4.1.min.js"> </script>
   <script src = "js/js.js"> </script>
