@@ -1,14 +1,39 @@
 "use strict";
-/*
 
-function color_randon( max, min){
-    return Math.floor(Math.random() * (max - min)) + min;
+
+var todoItems = [];
+
+function addTodo(text) {
+    const todo = {
+        title: text,
+        color: 'random color',
+        id: Date.now(),
+        checked: false
+    };
+
+    todoItems.push(todo);
+    const list = document.querySelector('our__list');
+    list.insertAdjacentHTML('beforeed',`
+    <li class = 'todo-item' data-key = '${todo.id}'>
+    <input id = '${todo.id}' type = 'checkbox'/>
+    <label for = '${todo.id}' class = 'tick'></label>
+    <span>${todo.id}</span>
+    </li>
+    `);
 }
-*/
-// check off specific todos by clicking 
-$('#add').click(function(){
-    $("ul").after("<li><input type='checkbox' /></li>");
-    });
+
+const form = document.querySelector('button_add');
+form.addEventListener('submit', event => {
+event.preventDefault();
+const input = document.querySelector('button_input');
+
+const text = input.value.trim();
+if (text !== ''){
+    addTodo(text);
+    input.value = '';
+    input.focus();
+}
+});
 
 //Добавление туду
 //брать значение с инпута
