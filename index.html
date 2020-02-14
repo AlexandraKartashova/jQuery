@@ -1,30 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <title>TODOS</title>
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
   <body>
-    <div class = 'list' class = "todo">
-      <div class = 'title'>
-        <h2 class = 'todo_text'> TODO </h2>
-      </div>
-            <div class = 'bottons'>
-              <input class = 'text' type = 'text'>
-              <button class = 'pink'></button>
-              <button class = 'red'></button>
-              <button class = 'blue'></button>
-              <button class = 'green'></button>
-              <button class = 'yellow'></button>
-              <button class = 'lightblue'></button>
+    <div class = 'block'>
+      <ul class="our__list">
+      </ul>
+        <div class = 'block_form'>
+          <input type = 'text' placeholder="Add new item" class = 'form_input'>
+            <div class = button_color>
+              <button id = 'color' type = 'submit' class = 'red'></button>
+              <button id = 'color' type = 'submit' class = 'pink'></button>
+              <button id = 'color' type = 'submit' class = 'blue'></button>
+              <button id = 'color' type = 'submit' class = 'green'></button>
+              <button id = 'color' type = 'submit' class = 'yellow'></button>
+              <button id = 'color' type = 'submit' class = 'lightblue'></button>
+              <button id = 'add' type = 'submit' class = 'button_add'>Add</button>
+              <button id = 'add' type = 'submit' class = 'edit'>Edit</button>
+              <button id = 'add' type = 'submit' class = 'del'>Del</button>
             </div>
-            <div>
-              <button class = 'add'>Add</button>
-              <button class = 'edit'>Edit</button>
-              <button class = 'del'>Del</button>
-            </div>
+        </div>
     </div>
-
   <script src="lib/jquery-3.4.1.min.js"> </script>
   <script src = "js/js.js"> </script>
   </body>
