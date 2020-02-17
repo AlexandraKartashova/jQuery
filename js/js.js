@@ -1,4 +1,4 @@
-const todoList = [];
+let todoList = [];
 let color = ['red', 'pink', 'green', 'yellow', 'blue', 'lightblue']; // рандомные цвета
 
 const randomColor = () => {
@@ -6,16 +6,31 @@ const randomColor = () => {
     return color[i];
 }
 
+const clickTextTodoHandler = (newDivText, editInput, item) => {
+    newDivText.classList.add('hidden');
+    editInput.classList.remove('hidden');
+    editInput.value = item.title;
+    editInput.addEventListener('change',  (event) => {
+        item.title = event.target.value;
+        editInput.classList.add('hidden');
+        newDivText.classList.remove('hidden');
+        newDivText.innerHTML = event.target.value;
+    });
+}
+
 
 const addTodo = (item) => {
         const template = document.querySelector(".clone"); //созд клон блока
         const newDiv = template.cloneNode(true);
-        
-
-        const newDivText = newDiv.querySelector('.clone__text'); 
+             
+        const newDivText = newDiv.querySelector('.clone__text');
+        const editInput = newDiv.querySelector('.clone__input')
         newDivText.innerHTML = item.title;
+        newDivText.addEventListener('click',  () => {
+            clickTextTodoHandler(newDivText, editInput, item);
+        });
 
-        const newDivInput = newDiv.querySelector('input');
+        const newDivInput = newDiv.querySelector('.inop__check');
         newDivInput.checked = item.checked;
 
         newDivInput.addEventListener('click',  (event) => {
@@ -25,10 +40,8 @@ const addTodo = (item) => {
         
         newDiv.classList.remove('hidden');// убираем фон клон
         $('.my_list').append(newDiv);
-
-        for(let i = 0; i < todoList.length; i++){ //доработать
-            newDiv.style.backgroundColor = randomColor();
-        }    
+        newDiv.style.backgroundColor = item.color;
+    
 }
 
 
@@ -36,40 +49,34 @@ const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
 }
 
-    const showNewTodo = (todoList) => {
-        todoList.forEach(item => addTodo(item));
-    
-}
-del.onclick = function() {
-    console.log('hi');
-    const delCheck = todoList.map(function(todoList) {
-    return todoList.checked === true;
 
-    })
-    console.log(delCheck);
-    // const delCheck = (todoList) => { //доработать
-    // todoList.filter(checked => addTodo(checked) === 'false');
-    // return delCheck;
-    //}
+del.onclick = () => {
+    todoList = todoList.filter((item) => !item.checked);
+    clearyRender();
+    showTodo(todoList);
 }
 
-const clearyList = () => {
+
+const clearyRender = () => {
     const list = document.querySelector(".my_list");
     list.innerHTML = '';
 }
 
 $('#add').on('click', () => {
     const inputValue = $('#new_item')[0].value;
-    todoList.push({
-        title: inputValue,
-        color: randomColor(),
-        id: Date.now(),
-        checked: false
-    });
-    clearyList();
-    showTodo(todoList);
-    $('#new_item')[0].value = '';
-    console.log(todoList);
+    if(inputValue) {
+        todoList.push({
+            title: inputValue,
+            color: randomColor(),
+            id: Date.now(),
+            checked: false
+        });
+        clearyRender();
+        showTodo(todoList);
+        $('#new_item')[0].value = '';
+    }
+    else alert('Input text');
+    //console.log(todoList);
 
 })
 
