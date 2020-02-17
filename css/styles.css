@@ -14,14 +14,17 @@ ul{
     list-style-type: none;
 }
 
-li{
-    margin-left: 45px;
+.hidden{
+    display: none;
+}
+.clone{
     margin-top: 5px;
-    width: 700px;
+    width: 600px;
     height: 20px;
     border: 1px solid black;
     text-align: left;
     list-style-type: none;
+    /* background-color: whitesmoke; */
 }
 
 .block_form{
@@ -127,4 +130,9 @@ li{
     font-weight: bolder;
     font-size: 18px;
     background-color: lightgreen;
+}
+
+.my_list{
+    display: flex;
+    flex-direction: column;
 }

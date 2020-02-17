@@ -1,14 +1,35 @@
 const todoList = [];
 
-const showTodo = (todoList) => {
-        const newDiv = document.createElement("div");
-        newDiv.innerHTML = todoList[0].title;
+const addTodo = (item) => {
+        // const newDiv = document.createElement("div");
+        const template = document.querySelector(".clone");
+        const newDiv = template.cloneNode(true);
 
+        const newDivText = newDiv.querySelector('.clone__text');
+        newDivText.innerHTML = item.title;
+
+        const newDivInput = newDiv.querySelector('input');
+        newDivInput.checked = item.checked;
+        newDivInput.addEventListener('click',  (event) => {
+            item.checked = event.target.checked;
+        });
+
+        newDiv.classList.remove('hidden');
         $('.my_list').append(newDiv);
 }
 
-const removeTodo = (item) => {
+const showTodo = (todoList) => {
+    todoList.forEach(item => addTodo(item));
+}
 
+const delet = (array) => {
+    array = array.filter(item => item===1)
+}
+
+const clearyList = () => {
+    const list = document.querySelector(".my_list");
+    list.innerHTML = '';
+    console.log(list);
 }
 
 $('#add').on('click', () => {
@@ -18,9 +39,10 @@ $('#add').on('click', () => {
         color: 'randomColor',
         id: 'randomId',
         checked: false
-    })
-    showTodo(todoList)
-    console.log('here will be our todoList: ', todoList)
+    });
+    clearyList();
+    showTodo(todoList);
+    $('#new_item')[0].value = '';
 })
 
 
