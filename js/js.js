@@ -1,14 +1,30 @@
-"use strict";
-/*
+const todoList = [];
 
-function color_randon( max, min){
-    return Math.floor(Math.random() * (max - min)) + min;
+const showTodo = (todoList) => {
+        const newDiv = document.createElement("div");
+        newDiv.innerHTML = todoList[0].title;
+
+        $('.my_list').append(newDiv);
 }
-*/
-// check off specific todos by clicking 
-$('#add').click(function(){
-    $("ul").after("<li><input type='checkbox' /></li>");
-    });
+
+const removeTodo = (item) => {
+
+}
+
+$('#add').on('click', () => {
+    const inputValue = $('#new_item')[0].value;
+    todoList.push({
+        title: inputValue,
+        color: 'randomColor',
+        id: 'randomId',
+        checked: false
+    })
+    showTodo(todoList)
+    console.log('here will be our todoList: ', todoList)
+})
+
+
+
 
 //Добавление туду
 //брать значение с инпута
