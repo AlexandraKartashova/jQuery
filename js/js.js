@@ -3,7 +3,6 @@ let color = ['red', 'pink', 'green', 'yellow', 'blue', 'lightblue']; // ранд
 
 const randomColor = () => {
     const i =  Math.round(Math.random() * 6);
-    //console.log(color[i]);
     return color[i];
 }
 
@@ -25,44 +24,34 @@ const addTodo = (item) => {
     });
         
         newDiv.classList.remove('hidden');// убираем фон клон
-        
         $('.my_list').append(newDiv);
 
         for(let i = 0; i < todoList.length; i++){ //доработать
             newDiv.style.backgroundColor = randomColor();
         }    
-        //console.log(newDiv);
-        //'<newDiv style = "background-color : randomColor()">'</newDiv>'
-    
-    
 }
 
 
 const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
+}
+
+    const showNewTodo = (todoList) => {
+        todoList.forEach(item => addTodo(item));
     
 }
-// const newDate = (todoList) => {
-//     todoList.filter(checked => checked === 'false');
-// }
-// console.log(todoList.checked === 'false');
+del.onclick = function() {
+    console.log('hi');
+    const delCheck = todoList.map(function(todoList) {
+    return todoList.checked === true;
 
-// $('#del').on('click', () => {
-// const delet = (todoList) => {
-//     const newList = todoList.filter(checked => checked === 'false')
-    
-//     console.log(newList);
-
-// }
-// console.log(delet());
-// });
-
-// $('#del').on('click', () => {
-
-// console.log(newDate());
-
-// });
-
+    })
+    console.log(delCheck);
+    // const delCheck = (todoList) => { //доработать
+    // todoList.filter(checked => addTodo(checked) === 'false');
+    // return delCheck;
+    //}
+}
 
 const clearyList = () => {
     const list = document.querySelector(".my_list");
@@ -80,7 +69,6 @@ $('#add').on('click', () => {
     clearyList();
     showTodo(todoList);
     $('#new_item')[0].value = '';
-    
     console.log(todoList);
 
 })
