@@ -1,48 +1,88 @@
 const todoList = [];
+let color = ['red', 'pink', 'green', 'yellow', 'blue', 'lightblue']; // рандомные цвета
+
+const randomColor = () => {
+    const i =  Math.round(Math.random() * 6);
+    //console.log(color[i]);
+    return color[i];
+}
+
 
 const addTodo = (item) => {
-        // const newDiv = document.createElement("div");
-        const template = document.querySelector(".clone");
+        const template = document.querySelector(".clone"); //созд клон блока
         const newDiv = template.cloneNode(true);
+        
 
-        const newDivText = newDiv.querySelector('.clone__text');
+        const newDivText = newDiv.querySelector('.clone__text'); 
         newDivText.innerHTML = item.title;
 
         const newDivInput = newDiv.querySelector('input');
         newDivInput.checked = item.checked;
-        newDivInput.addEventListener('click',  (event) => {
-            item.checked = event.target.checked;
-        });
 
-        newDiv.classList.remove('hidden');
+        newDivInput.addEventListener('click',  (event) => {
+        item.checked = event.target.checked;
+        
+    });
+        
+        newDiv.classList.remove('hidden');// убираем фон клон
+        
         $('.my_list').append(newDiv);
+
+        for(let i = 0; i < todoList.length; i++){ //доработать
+            newDiv.style.backgroundColor = randomColor();
+        }    
+        //console.log(newDiv);
+        //'<newDiv style = "background-color : randomColor()">'</newDiv>'
+    
+    
 }
+
 
 const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
+    
 }
+// const newDate = (todoList) => {
+//     todoList.filter(checked => checked === 'false');
+// }
+// console.log(todoList.checked === 'false');
 
-const delet = (array) => {
-    array = array.filter(item => item===1)
-}
+// $('#del').on('click', () => {
+// const delet = (todoList) => {
+//     const newList = todoList.filter(checked => checked === 'false')
+    
+//     console.log(newList);
+
+// }
+// console.log(delet());
+// });
+
+// $('#del').on('click', () => {
+
+// console.log(newDate());
+
+// });
+
 
 const clearyList = () => {
     const list = document.querySelector(".my_list");
     list.innerHTML = '';
-    console.log(list);
 }
 
 $('#add').on('click', () => {
     const inputValue = $('#new_item')[0].value;
     todoList.push({
         title: inputValue,
-        color: 'randomColor',
-        id: 'randomId',
+        color: randomColor(),
+        id: Date.now(),
         checked: false
     });
     clearyList();
     showTodo(todoList);
     $('#new_item')[0].value = '';
+    
+    console.log(todoList);
+
 })
 
 
