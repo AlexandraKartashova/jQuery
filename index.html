@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
   <body>
-    <div class = 'block'>
+      <div class = 'block'>
         <div class = 'block_form'>
-            <input  id = 'new_item' type = 'text' placeholder="Add new item" name = 'newList'>
+            <input  id='new_item' type='text' placeholder="Add new item" name='newList'>
             <div class = button_color>
               <button id = 'color' type = 'submit' class = 'red'></button>
               <button id = 'color' type = 'submit' class = 'pink'></button>
@@ -16,12 +16,19 @@
               <button id = 'color' type = 'submit' class = 'yellow'></button>
               <button id = 'color' type = 'submit' class = 'lightblue'></button>
               <button id = 'del' type = 'submit' class = 'del'>Del</button>
-              <button id = 'edit' type = 'submit' class = 'edit'>Edit</button>
               <button id = 'add' type = 'submit' class = 'add'>Add</button>
             </div>
         </div>
+        <div>
           <ul class="my_list">
           </ul>
+        </div>
+          
+          <div class = 'clone hidden' id = 'newClone'>
+            <input type="checkbox" class="inop__check">
+            <input type="text" class="clone__input hidden">
+            <span class = 'clone__text' id = 'clones'></span>
+          </div>
     </div>
   <script src="lib/jquery-3.4.1.min.js"> </script>
   <script src = "js/js.js"> </script>
