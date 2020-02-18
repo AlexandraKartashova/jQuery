@@ -1,5 +1,5 @@
 let todoList = [];
-let color = ['red', 'pink', 'green', 'yellow', 'blue', 'lightblue']; // рандомные цвета
+let color = ['red', 'blue', 'yellow', 'orange', 'lightblue', 'olive']; // рандомные цвета
 
 const randomColor = () => {
     const i =  Math.round(Math.random() * 6);
@@ -18,11 +18,17 @@ const clickTextTodoHandler = (newDivText, editInput, item) => {
     });
 }
 
+const btnRed = document.getElementById('red');
+const btnOrange = document.getElementById('orange');
+const btnBlue = document.getElementById('blue');
+const btnGreen = document.getElementById('green');
+const btnYellow = document.getElementById('yellow');
+const btnLightblue = document.getElementById('lightblue');
 
 const addTodo = (item) => {
         const template = document.querySelector(".clone"); //созд клон блока
         const newDiv = template.cloneNode(true);
-             
+
         const newDivText = newDiv.querySelector('.clone__text');
         const editInput = newDiv.querySelector('.clone__input')
         newDivText.innerHTML = item.title;
@@ -41,9 +47,48 @@ const addTodo = (item) => {
         newDiv.classList.remove('hidden');// убираем фон клон
         $('.my_list').append(newDiv);
         newDiv.style.backgroundColor = item.color;
-    
-}
 
+        btnRed.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[0];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+
+        btnBlue.addEventListener('click',  () => {
+                    if(item.checked == true){
+                    item.color = color[1];
+                    newDiv.style.backgroundColor = item.color;
+                    }
+                });
+        btnYellow.addEventListener('click',  () => {
+                    if(item.checked == true){
+                    item.color = color[2];
+                    newDiv.style.backgroundColor = item.color;
+                    }
+                });
+
+        btnOrange.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[3];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+
+        btnLightblue.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[4];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+
+        btnGreen.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[5];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+}
 
 const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
@@ -76,10 +121,46 @@ $('#add').on('click', () => {
         $('#new_item')[0].value = '';
     }
     else alert('Input text');
-    //console.log(todoList);
+    console.log(todoList);
 
 })
 
+
+// red.onclick = () => {
+//     newColor = todoList.filter((item) => item.checked)
+//     $(".clone").css("backgroundColor", "red");
+//     console.log(todoList.filter((item) => item.checked));
+// }
+
+// orange.onclick = () => {
+//     todoList = todoList.filter((item) => !item.checked);
+//     $(".clone").css("backgroundColor", "orange");
+//     showTodo(todoList);
+// }
+
+// blue.onclick = () => {
+//     todoList = todoList.filter((item) => !item.checked);
+//     $(".clone").css("backgroundColor", "blue");
+//     showTodo(todoList);
+// }
+
+// green.onclick = () => {
+//     todoList = todoList.filter((item) => !item.checked);
+//     $(".clone").css("backgroundColor", "olive");
+//     showTodo(todoList);
+// }
+
+// yellow.onclick = () => {
+//     todoList = todoList.filter((item) => !item.checked);
+//     $(".clone").css("backgroundColor", "yellow");
+//     showTodo(todoList);
+// }
+
+// lightblue.onclick = () => {
+//     todoList = todoList.filter((item) => !item.checked);
+//     $(".clone").css("backgroundColor", "lightblue");
+//     showTodo(todoList);
+// }
 
 
 
