@@ -1,5 +1,5 @@
 let todoList = [];
-let color = ['red', 'blue', 'yellow', 'orange', 'lightblue', 'olive']; // рандомные цвета
+const color = ['red', 'orange', 'blue', 'olive', 'yellow', 'lightblue' ]; // рандомные цвета
 
 const randomColor = () => {
     const i =  Math.round(Math.random() * 6);
@@ -18,12 +18,13 @@ const clickTextTodoHandler = (newDivText, editInput, item) => {
     });
 }
 
-const btnRed = document.getElementById('red');
-const btnOrange = document.getElementById('orange');
-const btnBlue = document.getElementById('blue');
-const btnGreen = document.getElementById('green');
-const btnYellow = document.getElementById('yellow');
-const btnLightblue = document.getElementById('lightblue');
+
+btnRed = document.getElementById('red');
+btnOrange = document.getElementById('orange');
+btnBlue = document.getElementById('blue');
+btnGreen = document.getElementById('green');
+btnYellow = document.getElementById('yellow');
+btnLightblue = document.getElementById('lightblue');
 
 const addTodo = (item) => {
         const template = document.querySelector(".clone"); //созд клон блока
@@ -47,7 +48,7 @@ const addTodo = (item) => {
         newDiv.classList.remove('hidden');// убираем фон клон
         $('.my_list').append(newDiv);
         newDiv.style.backgroundColor = item.color;
-
+        
         btnRed.addEventListener('click',  () => {
             if(item.checked == true){
             item.color = color[0];
@@ -55,34 +56,34 @@ const addTodo = (item) => {
             }
         });
 
-        btnBlue.addEventListener('click',  () => {
-                    if(item.checked == true){
-                    item.color = color[1];
-                    newDiv.style.backgroundColor = item.color;
-                    }
-                });
-        btnYellow.addEventListener('click',  () => {
-                    if(item.checked == true){
-                    item.color = color[2];
-                    newDiv.style.backgroundColor = item.color;
-                    }
-                });
-
         btnOrange.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[1];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+
+        btnBlue.addEventListener('click',  () => {
+            if(item.checked == true){
+            item.color = color[2];
+            newDiv.style.backgroundColor = item.color;
+            }
+        });
+        btnGreen.addEventListener('click',  () => {
             if(item.checked == true){
             item.color = color[3];
             newDiv.style.backgroundColor = item.color;
             }
         });
 
-        btnLightblue.addEventListener('click',  () => {
+        btnYellow.addEventListener('click',  () => {
             if(item.checked == true){
             item.color = color[4];
             newDiv.style.backgroundColor = item.color;
             }
         });
 
-        btnGreen.addEventListener('click',  () => {
+        btnLightblue.addEventListener('click',  () => {
             if(item.checked == true){
             item.color = color[5];
             newDiv.style.backgroundColor = item.color;
@@ -94,7 +95,7 @@ const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
 }
 
-
+//TODO use splice
 del.onclick = () => {
     todoList = todoList.filter((item) => !item.checked);
     clearyRender();
@@ -103,11 +104,11 @@ del.onclick = () => {
 
 
 const clearyRender = () => {
-    const list = document.querySelector(".my_list");
+    const list = document.querySelector('.my_list');
     list.innerHTML = '';
 }
 
-$('#add').on('click', () => {
+$('#add').on('click', (item) => {
     const inputValue = $('#new_item')[0].value;
     if(inputValue) {
         todoList.push({
@@ -122,79 +123,4 @@ $('#add').on('click', () => {
     }
     else alert('Input text');
     console.log(todoList);
-
 })
-
-
-// red.onclick = () => {
-//     newColor = todoList.filter((item) => item.checked)
-//     $(".clone").css("backgroundColor", "red");
-//     console.log(todoList.filter((item) => item.checked));
-// }
-
-// orange.onclick = () => {
-//     todoList = todoList.filter((item) => !item.checked);
-//     $(".clone").css("backgroundColor", "orange");
-//     showTodo(todoList);
-// }
-
-// blue.onclick = () => {
-//     todoList = todoList.filter((item) => !item.checked);
-//     $(".clone").css("backgroundColor", "blue");
-//     showTodo(todoList);
-// }
-
-// green.onclick = () => {
-//     todoList = todoList.filter((item) => !item.checked);
-//     $(".clone").css("backgroundColor", "olive");
-//     showTodo(todoList);
-// }
-
-// yellow.onclick = () => {
-//     todoList = todoList.filter((item) => !item.checked);
-//     $(".clone").css("backgroundColor", "yellow");
-//     showTodo(todoList);
-// }
-
-// lightblue.onclick = () => {
-//     todoList = todoList.filter((item) => !item.checked);
-//     $(".clone").css("backgroundColor", "lightblue");
-//     showTodo(todoList);
-// }
-
-
-
-//Добавление туду
-//брать значение с инпута
-//добавлять рандомный цвет
-//добавлять айди УНИКАЛЬНЫЙ
-//добавлять значение чекбокса
-//запихивать это в обьект
-//обьект запихивать в массив
-// const testArray = [
-//     {
-//       title: 'input value',
-//       color: 'random color',
-//       id: 'id',
-//       checked: 'true/false'
-//     },
-//     {
-//       title: 'input value',
-//       color: 'random color',
-//       id: 'id',
-//       checked: 'true/false'
-//     }
-//]
-
-//отрисовка
-// проходить циклом по массиву и отрисовывать его в документ
-// используя HTML элементы
-// javascript map filter 
-// javascript create element
-
-//смена цвета существующего
-//работа с чекбоксом
-//цикл по массиву - находить нужный элемент(обьект) - менять цвет
-
-//редактирование
-//удаление

@@ -42,74 +42,69 @@
 }
 
 .button_color{
-    float: right;
-    margin-top: 10px;
+    width: 300px;
+    margin-left: 450px;
+    height: 60px;
+}
+
+.button_color .red,
+.button_color .blue,
+.button_color .green,
+.button_color .orange,
+.button_color .yellow,
+.button_color .lightblue{
+    margin-top: 18px;
+    height: 20px;
+    width: 20px;
     }
 
 .red{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: red;
 }
 
 .blue{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: blue;
 }
 
 .green{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: olive;
 }
 
 .orange{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: orange;
 }
 
 .yellow{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: yellow;
 }
 
 .lightblue{
-    margin: 1px;
-    height: 20px;
-    width: 20px;
     background-color: lightblue;
     
 }
 
-#add{
-    text-align: center;
+.button_color .del,
+.button_color .add{
     height: 40px;
-    width: 80px;
-    background-color: lightgreen;
-    margin-bottom: 10px;
+    margin-top: 10px;
     margin-right: 10px;
     border-radius: 5px;
-    font-weight: bolder;
+    margin-bottom: 10px;
     font-size: 18px;
+    text-align: center;
+    font-weight: bolder;
+    float: right;
+    background-color: lightgreen;
+
 }
 
-.del {
-    text-align: center;
-    height: 40px;
+.button_color .del {
     width: 50px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-weight: bolder;
-    font-size: 18px;
-    background-color: lightgreen;
+}
+
+.button_color .add{
+    width: 80px;
+    
 }
 
 .my_list {
