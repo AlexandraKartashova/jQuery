@@ -1,4 +1,5 @@
-let todoList = [];
+const todoList = [];
+const checkedList = [];
 const color = ['red', 'orange', 'blue', 'olive', 'yellow', 'lightblue' ]; // рандомные цвета
 
 const randomColor = () => {
@@ -18,77 +19,54 @@ const clickTextTodoHandler = (newDivText, editInput, item) => {
     });
 }
 
+const toglerChekedElementOnId = (item) => {
+    item.checked = event.target.checked;
+    const indexId = checkedList.indexOf(item.id);
+    if(item.checked & indexId === -1) {
+        checkedList.push(item.id);
+    }
+    if(!item.checked & indexId !== -1) {
+        checkedList.splice(indexId, 1);
+    }
+    console.log('cheked list', checkedList) 
+};
 
-btnRed = document.getElementById('red');
-btnOrange = document.getElementById('orange');
-btnBlue = document.getElementById('blue');
-btnGreen = document.getElementById('green');
-btnYellow = document.getElementById('yellow');
-btnLightblue = document.getElementById('lightblue');
 
-const addTodo = (item) => {
-        const template = document.querySelector(".clone"); //созд клон блока
+const controlsColors = document.querySelector('.controls__colors');
+    controlsColors.onclick = (event) => {
+    const newColor = event.target.id;
+    todoList.forEach(item => {
+        if(item.checked){
+            item.color = newColor;
+            clearyRender();
+            showTodo(todoList);
+        }
+    });
+};
+
+
+const addTodo = (item) => { 
+        const template = document.querySelector(".clone"); 
         const newDiv = template.cloneNode(true);
 
         const newDivText = newDiv.querySelector('.clone__text');
         const editInput = newDiv.querySelector('.clone__input')
         newDivText.innerHTML = item.title;
-        newDivText.addEventListener('click',  () => {
+        newDivText.onclick = () => {
             clickTextTodoHandler(newDivText, editInput, item);
-        });
+        };
 
         const newDivInput = newDiv.querySelector('.inop__check');
         newDivInput.checked = item.checked;
 
-        newDivInput.addEventListener('click',  (event) => {
-        item.checked = event.target.checked;
-        
-    });
+        newDivInput.onclick = (event) => {
+            toglerChekedElementOnId(item);
+        };
         
         newDiv.classList.remove('hidden');// убираем фон клон
         $('.my_list').append(newDiv);
         newDiv.style.backgroundColor = item.color;
-        
-        btnRed.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[0];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
-
-        btnOrange.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[1];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
-
-        btnBlue.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[2];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
-        btnGreen.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[3];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
-
-        btnYellow.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[4];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
-
-        btnLightblue.addEventListener('click',  () => {
-            if(item.checked == true){
-            item.color = color[5];
-            newDiv.style.backgroundColor = item.color;
-            }
-        });
+    
 }
 
 const showTodo = (todoList) => {
@@ -97,18 +75,27 @@ const showTodo = (todoList) => {
 
 //TODO use splice
 del.onclick = () => {
-    todoList = todoList.filter((item) => !item.checked);
+    checkedList.forEach(item => {
+        deleteOneElem(item);
+    });
     clearyRender();
     showTodo(todoList);
 }
 
+const deleteOneElem = (id) => {
+    const indexIdForDel = todoList.findIndex(item => item.id === id);
+    if(indexIdForDel !== -1) {
+        todoList.splice(indexIdForDel, 1);
+        console.log('print id', indexIdForDel);
+    }
+};
 
 const clearyRender = () => {
     const list = document.querySelector('.my_list');
     list.innerHTML = '';
 }
 
-$('#add').on('click', (item) => {
+add.onclick = (item) => {
     const inputValue = $('#new_item')[0].value;
     if(inputValue) {
         todoList.push({
@@ -122,5 +109,5 @@ $('#add').on('click', (item) => {
         $('#new_item')[0].value = '';
     }
     else alert('Input text');
-    console.log(todoList);
-})
+    console.log('todo list in click checkbox', todoList);
+}
