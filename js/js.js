@@ -28,7 +28,6 @@ const toglerChekedElementOnId = (item) => {
     if(!item.checked & indexId !== -1) {
         checkedList.splice(indexId, 1);
     }
-    console.log('cheked list', checkedList) 
 };
 
 
