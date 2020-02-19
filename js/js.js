@@ -55,15 +55,15 @@ const addTodo = (item) => {
             clickTextTodoHandler(newDivText, editInput, item);
         };
 
-        const newDivInput = newDiv.querySelector('.inop__check');
+        const newDivInput = newDiv.querySelector('.input__check');
         newDivInput.checked = item.checked;
 
         newDivInput.onclick = (event) => {
             toglerChekedElementOnId(item);
         };
         
-        newDiv.classList.remove('hidden');// убираем фон клон
-        $('.my_list').append(newDiv);
+        newDiv.classList.remove('hidden');
+        $('.my__list').append(newDiv);
         newDiv.style.backgroundColor = item.color;
     
 }
@@ -85,16 +85,15 @@ const deleteOneElem = (id) => {
     const indexIdForDel = todoList.findIndex(item => item.id === id);
     if(indexIdForDel !== -1) {
         todoList.splice(indexIdForDel, 1);
-        console.log('print id', indexIdForDel);
     }
 };
 
 const clearyRender = () => {
-    const list = document.querySelector('.my_list');
+    const list = document.querySelector('.my__list');
     list.innerHTML = '';
 }
 
-add.onclick = (item) => {
+add.onclick = () => {
     const inputValue = $('#new_item')[0].value;
     if(inputValue) {
         todoList.push({
@@ -106,7 +105,5 @@ add.onclick = (item) => {
         clearyRender();
         showTodo(todoList);
         $('#new_item')[0].value = '';
-    }
-    else alert('Input text');
-    console.log('todo list in click checkbox', todoList);
+    } else alert('Input text');
 }

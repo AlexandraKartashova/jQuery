@@ -42,9 +42,16 @@
 }
 
 .controls{
+    display: flex;
+    flex-wrap: nowrap;
     width: 300px;
     margin-left: 450px;
     height: 60px;
+}
+
+.controls_colors{
+    margin-top: 20px;
+    height: 20px;
 }
 
 .controls .red,
@@ -83,10 +90,10 @@
     
 }
 
-.controls .del,
-.controls .add{
+.controls .add,
+.controls .del{
     height: 40px;
-    margin-right: 10px;
+    margin-top: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 18px;
@@ -97,16 +104,16 @@
 
 }
 
-.button_color .del {
-    width: 50px;
-}
-
-.button_color .add{
+.controls .add{
     width: 80px;
-    
 }
 
-.my_list {
+.controls .del {
+    width: 50px;
+    margin: 10px;
+}
+
+.my__list {
     display: flex;
     flex-direction: column;
 }
