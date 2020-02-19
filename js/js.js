@@ -1,5 +1,6 @@
-let todoList = [];
-let color = ['red', 'pink', 'green', 'yellow', 'blue', 'lightblue']; // рандомные цвета
+const todoList = [];
+const checkedList = [];
+const color = ['red', 'orange', 'blue', 'olive', 'yellow', 'lightblue' ]; // рандомные цвета
 
 const randomColor = () => {
     const i =  Math.round(Math.random() * 6);
@@ -18,25 +19,49 @@ const clickTextTodoHandler = (newDivText, editInput, item) => {
     });
 }
 
+const toglerChekedElementOnId = (item) => {
+    item.checked = event.target.checked;
+    const indexId = checkedList.indexOf(item.id);
+    if(item.checked & indexId === -1) {
+        checkedList.push(item.id);
+    }
+    if(!item.checked & indexId !== -1) {
+        checkedList.splice(indexId, 1);
+    }
+    console.log('cheked list', checkedList) 
+};
 
-const addTodo = (item) => {
-        const template = document.querySelector(".clone"); //созд клон блока
+
+const controlsColors = document.querySelector('.controls__colors');
+    controlsColors.onclick = (event) => {
+    const newColor = event.target.id;
+    todoList.forEach(item => {
+        if(item.checked){
+            item.color = newColor;
+            clearyRender();
+            showTodo(todoList);
+        }
+    });
+};
+
+
+const addTodo = (item) => { 
+        const template = document.querySelector(".clone"); 
         const newDiv = template.cloneNode(true);
-             
+
         const newDivText = newDiv.querySelector('.clone__text');
         const editInput = newDiv.querySelector('.clone__input')
         newDivText.innerHTML = item.title;
-        newDivText.addEventListener('click',  () => {
+        newDivText.onclick = () => {
             clickTextTodoHandler(newDivText, editInput, item);
-        });
+        };
 
         const newDivInput = newDiv.querySelector('.inop__check');
         newDivInput.checked = item.checked;
 
-        newDivInput.addEventListener('click',  (event) => {
-        item.checked = event.target.checked;
-        
-    });
+        newDivInput.onclick = (event) => {
+            toglerChekedElementOnId(item);
+        };
         
         newDiv.classList.remove('hidden');// убираем фон клон
         $('.my_list').append(newDiv);
@@ -44,25 +69,33 @@ const addTodo = (item) => {
     
 }
 
-
 const showTodo = (todoList) => {
     todoList.forEach(item => addTodo(item));
 }
 
-
+//TODO use splice
 del.onclick = () => {
-    todoList = todoList.filter((item) => !item.checked);
+    checkedList.forEach(item => {
+        deleteOneElem(item);
+    });
     clearyRender();
     showTodo(todoList);
 }
 
+const deleteOneElem = (id) => {
+    const indexIdForDel = todoList.findIndex(item => item.id === id);
+    if(indexIdForDel !== -1) {
+        todoList.splice(indexIdForDel, 1);
+        console.log('print id', indexIdForDel);
+    }
+};
 
 const clearyRender = () => {
-    const list = document.querySelector(".my_list");
+    const list = document.querySelector('.my_list');
     list.innerHTML = '';
 }
 
-$('#add').on('click', () => {
+add.onclick = (item) => {
     const inputValue = $('#new_item')[0].value;
     if(inputValue) {
         todoList.push({
@@ -76,44 +109,5 @@ $('#add').on('click', () => {
         $('#new_item')[0].value = '';
     }
     else alert('Input text');
-    //console.log(todoList);
-
-})
-
-
-
-
-//Добавление туду
-//брать значение с инпута
-//добавлять рандомный цвет
-//добавлять айди УНИКАЛЬНЫЙ
-//добавлять значение чекбокса
-//запихивать это в обьект
-//обьект запихивать в массив
-// const testArray = [
-//     {
-//       title: 'input value',
-//       color: 'random color',
-//       id: 'id',
-//       checked: 'true/false'
-//     },
-//     {
-//       title: 'input value',
-//       color: 'random color',
-//       id: 'id',
-//       checked: 'true/false'
-//     }
-//]
-
-//отрисовка
-// проходить циклом по массиву и отрисовывать его в документ
-// используя HTML элементы
-// javascript map filter 
-// javascript create element
-
-//смена цвета существующего
-//работа с чекбоксом
-//цикл по массиву - находить нужный элемент(обьект) - менять цвет
-
-//редактирование
-//удаление
+    console.log('todo list in click checkbox', todoList);
+}
