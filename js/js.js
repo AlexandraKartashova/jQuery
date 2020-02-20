@@ -1,11 +1,17 @@
 const todoList = [];
 const checkedList = [];
+
 const color = ['red', 'orange', 'blue', 'olive', 'yellow', 'lightblue' ]; // рандомные цвета
+
+const enter_btn = document.getElementById("new_item");
+const add = document.getElementById("add");
 
 const randomColor = () => {
     const i =  Math.round(Math.random() * 6);
     return color[i];
 }
+
+const enter = false;
 
 const clickTextTodoHandler = (newDivText, editInput, item) => {
     newDivText.classList.add('hidden');
@@ -49,7 +55,7 @@ const addTodo = (item) => {
         const newDiv = template.cloneNode(true);
 
         const newDivText = newDiv.querySelector('.clone__text');
-        const editInput = newDiv.querySelector('.clone__input')
+        const editInput = newDiv.querySelector('.clone__input');
         newDivText.innerHTML = item.title;
         newDivText.onclick = () => {
             clickTextTodoHandler(newDivText, editInput, item);
@@ -93,7 +99,27 @@ const clearyRender = () => {
     list.innerHTML = '';
 }
 
-add.onclick = () => {
+// buttonCode = () =>{
+// document.getElementById("for__enter__btn")
+//     .addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         document.getElementById("btn__enter").click();
+//     }
+// });
+// }
+
+enter_btn.addEventListener("keydown", KeyboardEvent => {
+    if (KeyboardEvent.key == "Enter") {
+        addItem();
+    }
+});
+
+add.addEventListener("click", function() {
+    addItem();
+});
+
+addItem = () => {
     const inputValue = $('#new_item')[0].value;
     if(inputValue) {
         todoList.push({
@@ -107,3 +133,6 @@ add.onclick = () => {
         $('#new_item')[0].value = '';
     } else alert('Input text');
 }
+
+
+// подвесить на  iput enter
